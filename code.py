@@ -1,11 +1,13 @@
-import gradio as gr
-import pandas as pd
-import matplotlib.pyplot as plt
-import ollama
-import io
+#imports
+
+import gradio as gr  # For building the web app
+import pandas as pd  # For handling CSV files
+import matplotlib.pyplot as plt  #     For plotting graphs
+import ollama  # For querying the LLM
+import io   # For handling file input
 
 # Function to answer user queries using Ollama
-def ask_llm(question, df):
+def ask_llm(question, df): #LLM Query Function
     """Generate an LLM response based on CSV content."""
     prompt = f"Analyze this CSV:\n\n{df.head(5).to_string()}\n\nQuestion: {question}"
 
@@ -29,7 +31,7 @@ def ask_llm(question, df):
         return f"LLM API error: {e}"
 
 # Function to plot graphs from the CSV file
-def generate_plot(df, x_column, y_column):
+def generate_plot(df, x_column, y_column): #Plot Generation Function
     if x_column not in df.columns or y_column not in df.columns:
         return None, f"Error: '{x_column}' or '{y_column}' column not found in CSV."
 
@@ -47,7 +49,7 @@ def generate_plot(df, x_column, y_column):
     return plot_path, None
 
 # Function to process CSV and generate response
-def process_csv(file, question, column_x, column_y):
+def process_csv(file, question, column_x, column_y): # CSV Processing Function
     try:
         # Read CSV from uploaded file
         df = pd.read_csv(io.BytesIO(file))  # Read file directly as bytes
@@ -86,7 +88,7 @@ def launch_app():
         )
 
     return app
-
-if __name__ == "__main__":
+# Running the Web App
+if __name__ == "__main__": 
     app = launch_app()
     app.launch()
