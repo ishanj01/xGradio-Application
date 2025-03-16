@@ -12,15 +12,15 @@ graph plotting, with all visualizations displayed within the Gradio interface.
 1. Importing Libraries
 
 
-gradio → Used to create an interactive web UI.
+1.gradio → Used to create an interactive web UI.
 
-pandas → Used for handling and processing CSV data.
+2.pandas → Used for handling and processing CSV data.
 
-matplotlib.pyplot → Used for generating visualizations (graphs).
+3.matplotlib.pyplot → Used for generating visualizations (graphs).
 
-ollama → Used to communicate with a local LLM (Llama 3.1).
+4.ollama → Used to communicate with a local LLM (Llama 3.1).
 
-io → Helps handle uploaded files in memory.
+5.io → Helps handle uploaded files in memory.
 
 ```bash
 import gradio as gr 
@@ -32,15 +32,15 @@ import io
 ```
 2. LLM Query Function:
 
-Takes a user question and a CSV dataframe (df). 
+1.Takes a user question and a CSV dataframe (df). 
 
-Extracts the first 5 rows of the CSV and formats it into a prompt.
+2.Extracts the first 5 rows of the CSV and formats it into a prompt.
 
-Sends the prompt to Ollama (local LLM API).
+3.Sends the prompt to Ollama (local LLM API).
 
-Checks if the response is valid and handles errors.
+4.Checks if the response is valid and handles errors.
 
-Returns the model’s answer.
+5.Returns the model’s answer.
 
  ```bash
   def ask_llm(question, df):
@@ -71,11 +71,11 @@ Returns the model’s answer.
 
 3. Plot Generation Function:
 
-Checks if the given columns exist in the CSV.
+1.Checks if the given columns exist in the CSV.
 
-Plots a graph of y_column vs x_column using Matplotlib.
+2.Plots a graph of y_column vs x_column using Matplotlib.
 
-Saves the plot as plot.png and returns the file path.
+3.Saves the plot as plot.png and returns the file path.
 
 ```bash
   def generate_plot(df, x_column, y_column):
@@ -99,13 +99,13 @@ Saves the plot as plot.png and returns the file path.
 
 4. CSV Processing Function:
 
-Reads the uploaded CSV file.
+1.Reads the uploaded CSV file.
 
-Uses Ollama to answer the user’s question.
+2.Uses Ollama to answer the user’s question.
 
-Generates a graph for the selected columns.
+3.Generates a graph for the selected columns.
 
-Returns both the answer and the graph path.
+4.Returns both the answer and the graph path.
 
 ```bash
   def process_csv(file, question, column_x, column_y):
@@ -125,17 +125,17 @@ Returns both the answer and the graph path.
 
 5. Gradio UI (Frontend):
 
-Creates a Gradio interface using Blocks().
+1.Creates a Gradio interface using Blocks().
 
 UI includes:
 
-File upload for CSV.
+1.File upload for CSV.
 
-Textbox for a user question.
+2.Textbox for a user question.
 
-Textbox for selecting X-axis and Y-axis columns.
+3.Textbox for selecting X-axis and Y-axis columns.
 
-Submit button to process data.
+4.Submit button to process data.
 
 Output fields for:
 
@@ -188,18 +188,40 @@ Launches the Gradio interface in the browser.
 
 🔹 Summary
 
-Upload a CSV file.
+1.Upload a CSV file.
 
-Ask a question about the CSV (processed by LLM).
+2.Ask a question about the CSV (processed by LLM).
 
-Select columns for graph visualization.
+3.Select columns for graph visualization.
 
 Get:
 
-LLM-generated insights.
+1.LLM-generated insights.
 
-A graph based on CSV data
+2.A graph based on CSV data
 
            
-![Logo](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/th5xamgrr6se0x5ro4g6.png)
+## UI-:
+
+![2025-03-16 18 55 21](https://github.com/user-attachments/assets/04846eb2-8ffd-4a53-98ee-b493fe194f2a)
+
+
+## Analysis:
+
+Insight 1: Price is inversely proportional to area
+Larger properties tend to be cheaper per square foot, suggesting that buyers might be prioritizing space over luxury.
+
+Insight 2: Most houses have 3-4 stories, but only half have hot water heating and air conditioning
+Buyers seem willing to sacrifice certain luxury features in favor of affordability or space.
+
+Insight 3: Parking is a top priority for most buyers (80%)
+Convenient parking availability significantly impacts desirability.
+
+Insight 4: Most houses are semi-furnished or furnished, but some buyers prefer unfurnished properties
+There is a mix of buyer preferences, suggesting demand for both furnished and unfurnished options.
+
+Insight 5: The preferential area ("prefarea") is often mentioned alongside parking and furnishing status
+Buyers consider the location along with amenities like parking and furnishing when making purchasing decisions.
+
+
 
